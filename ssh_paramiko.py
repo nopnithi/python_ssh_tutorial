@@ -13,5 +13,5 @@ with SSHClient() as client:
     session = client.invoke_shell()
     session.send('show version | include uptime' + '\n')
     sleep(1)
-    output = session.recv(32768).decode('utf-8')
+    output = session.recv(65535).decode('utf-8')
     print(output.strip())
